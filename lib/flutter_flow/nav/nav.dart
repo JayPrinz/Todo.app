@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -137,6 +138,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'AddNewNote',
           path: '/addNewNote',
           builder: (context, params) => const AddNewNoteWidget(),
+        ),
+        FFRoute(
+          name: 'details',
+          path: '/details',
+          asyncParams: {
+            'taskDoc': getDoc(['tasks'], TasksRecord.fromSnapshot),
+          },
+          builder: (context, params) => DetailsWidget(
+            taskDoc: params.getParam(
+              'taskDoc',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'notes_edit',
+          path: '/notesEdit',
+          asyncParams: {
+            'notesdoc': getDoc(['Notes'], NotesRecord.fromSnapshot),
+          },
+          builder: (context, params) => NotesEditWidget(
+            notesdoc: params.getParam(
+              'notesdoc',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -120,7 +120,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primary,
                                 letterSpacing: 0.0,
                               ),
@@ -164,7 +164,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     letterSpacing: 0.0,
                                   ),
                             ),

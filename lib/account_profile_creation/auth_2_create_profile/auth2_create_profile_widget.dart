@@ -113,7 +113,7 @@ class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primary,
                                 letterSpacing: 0.0,
                               ),

@@ -1,34 +1,46 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'add_new_note_model.dart';
-export 'add_new_note_model.dart';
+import 'notes_edit_model.dart';
+export 'notes_edit_model.dart';
 
-class AddNewNoteWidget extends StatefulWidget {
-  const AddNewNoteWidget({super.key});
+class NotesEditWidget extends StatefulWidget {
+  const NotesEditWidget({
+    super.key,
+    required this.notesdoc,
+  });
+
+  final NotesRecord? notesdoc;
 
   @override
-  State<AddNewNoteWidget> createState() => _AddNewNoteWidgetState();
+  State<NotesEditWidget> createState() => _NotesEditWidgetState();
 }
 
-class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
-  late AddNewNoteModel _model;
+class _NotesEditWidgetState extends State<NotesEditWidget> {
+  late NotesEditModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddNewNoteModel());
+    _model = createModel(context, () => NotesEditModel());
 
-    _model.titleTextController ??= TextEditingController();
+    _model.titleTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget.notesdoc?.notesTitle,
+      'title',
+    ));
     _model.titleFocusNode ??= FocusNode();
 
-    _model.contentTextController ??= TextEditingController();
+    _model.contentTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget.notesdoc?.notesContent,
+      'content',
+    ));
     _model.contentFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -88,7 +100,7 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                 0.0, 20.0, 0.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Align(
                                   alignment: const AlignmentDirectional(-0.85, -0.92),
@@ -108,7 +120,7 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                   ),
                                 ),
                                 Text(
-                                  'Notes',
+                                  'Note Details',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
@@ -120,7 +132,25 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                              ].divide(const SizedBox(width: 110.0)),
+                                Align(
+                                  alignment: const AlignmentDirectional(-0.85, -0.92),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 24.0,
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      _model.editing = !_model.editing;
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -135,6 +165,7 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                   controller: _model.titleTextController,
                                   focusNode: _model.titleFocusNode,
                                   autofocus: true,
+                                  readOnly: !_model.editing,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Title',
@@ -209,6 +240,7 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                   controller: _model.contentTextController,
                                   focusNode: _model.contentFocusNode,
                                   autofocus: true,
+                                  readOnly: !_model.editing,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Start typing...',
@@ -285,20 +317,12 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await NotesRecord.collection
-                            .doc()
-                            .set(createNotesRecordData(
-                              notesTitle: valueOrDefault<String>(
-                                _model.titleTextController.text,
-                                'title',
-                              ),
-                              notesContent: valueOrDefault<String>(
-                                _model.contentTextController.text,
-                                'content',
-                              ),
-                              date: getCurrentTimestamp,
-                              users: currentUserReference,
-                            ));
+                        await widget.notesdoc!.reference
+                            .update(createNotesRecordData(
+                          notesTitle: _model.titleTextController.text,
+                          notesContent: _model.contentTextController.text,
+                          date: getCurrentTimestamp,
+                        ));
 
                         context.pushNamed(
                           'Notes',
@@ -311,9 +335,9 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                           },
                         );
                       },
-                      text: 'Save Note',
+                      text: 'Save changes',
                       icon: const Icon(
-                        Icons.upload_outlined,
+                        Icons.save,
                         size: 15.0,
                       ),
                       options: FFButtonOptions(

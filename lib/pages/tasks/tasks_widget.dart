@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/add_task_widget.dart';
 import '/components/task_component_widget.dart';
@@ -66,7 +67,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -74,8 +75,8 @@ class _TasksWidgetState extends State<TasksWidget> {
                         ],
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 15.0, 0.0, 15.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -101,7 +102,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -122,11 +123,15 @@ class _TasksWidgetState extends State<TasksWidget> {
                             ),
                             child: StreamBuilder<List<TasksRecord>>(
                               stream: queryTasksRecord(
-                                queryBuilder: (tasksRecord) =>
-                                    tasksRecord.where(
-                                  'completed',
-                                  isEqualTo: false,
-                                ),
+                                queryBuilder: (tasksRecord) => tasksRecord
+                                    .where(
+                                      'user',
+                                      isEqualTo: currentUserReference,
+                                    )
+                                    .where(
+                                      'completed',
+                                      isEqualTo: false,
+                                    ),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -155,10 +160,36 @@ class _TasksWidgetState extends State<TasksWidget> {
                                   itemBuilder: (context, listViewIndex) {
                                     final listViewTasksRecord =
                                         listViewTasksRecordList[listViewIndex];
-                                    return TaskComponentWidget(
-                                      key: Key(
-                                          'Key5k2_${listViewIndex}_of_${listViewTasksRecordList.length}'),
-                                      tasks: listViewTasksRecord,
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'details',
+                                          queryParameters: {
+                                            'taskDoc': serializeParam(
+                                              listViewTasksRecord,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'taskDoc': listViewTasksRecord,
+                                          },
+                                        );
+                                      },
+                                      child: TaskComponentWidget(
+                                        key: Key(
+                                            'Key5k2_${listViewIndex}_of_${listViewTasksRecordList.length}'),
+                                        tasks: listViewTasksRecord,
+                                        checkbox: () async {
+                                          await listViewTasksRecord.reference
+                                              .update(createTasksRecordData(
+                                            completed: true,
+                                          ));
+                                        },
+                                      ),
                                     );
                                   },
                                 );
@@ -177,8 +208,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FlutterFlowIconButton(
-                            borderColor:
-                                FlutterFlowTheme.of(context).primaryText,
+                            borderColor: Colors.white,
                             borderRadius: 24.0,
                             borderWidth: 2.0,
                             buttonSize: 50.0,

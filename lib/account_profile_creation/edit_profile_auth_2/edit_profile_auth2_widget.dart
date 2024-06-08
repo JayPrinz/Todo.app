@@ -75,7 +75,7 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
               child: Text(
                 widget.title,
                 style: FlutterFlowTheme.of(context).displaySmall.override(
-                      fontFamily: 'Outfit',
+                      fontFamily: 'Inter',
                       letterSpacing: 0.0,
                     ),
               ),

@@ -10,9 +10,11 @@ class TaskComponentWidget extends StatefulWidget {
   const TaskComponentWidget({
     super.key,
     required this.tasks,
+    required this.checkbox,
   });
 
   final TasksRecord? tasks;
+  final Future Function()? checkbox;
 
   @override
   State<TaskComponentWidget> createState() => _TaskComponentWidgetState();
@@ -81,6 +83,11 @@ class _TaskComponentWidgetState extends State<TaskComponentWidget> {
                         value: _model.checkboxValue ??= widget.tasks!.completed,
                         onChanged: (newValue) async {
                           setState(() => _model.checkboxValue = newValue!);
+                          if (newValue!) {
+                            await widget.checkbox?.call();
+                          } else {
+                            await widget.checkbox?.call();
+                          }
                         },
                         side: BorderSide(
                           width: 2,
@@ -118,13 +125,13 @@ class _TaskComponentWidgetState extends State<TaskComponentWidget> {
             borderColor: Colors.transparent,
             borderRadius: 24.0,
             buttonSize: 40.0,
-            icon: Icon(
+            icon: const Icon(
               Icons.delete_outlined,
-              color: FlutterFlowTheme.of(context).primaryText,
+              color: Color(0xFFFF0000),
               size: 24.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              await widget.tasks!.reference.delete();
             },
           ),
         ],

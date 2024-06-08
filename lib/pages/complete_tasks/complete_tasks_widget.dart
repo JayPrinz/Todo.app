@@ -1,3 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/task_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -61,7 +64,7 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Inter',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w800,
                             ),
@@ -70,7 +73,7 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +97,7 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -113,10 +116,84 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                           color: const Color(0x00FFFFFF),
                           borderRadius: BorderRadius.circular(2.0),
                         ),
-                        child: ListView(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          children: <Widget>[].divide(const SizedBox(height: 12.0)),
+                        child: StreamBuilder<List<TasksRecord>>(
+                          stream: queryTasksRecord(
+                            queryBuilder: (tasksRecord) => tasksRecord
+                                .where(
+                                  'user',
+                                  isEqualTo: currentUserReference,
+                                )
+                                .where(
+                                  'completed',
+                                  isEqualTo: true,
+                                ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<TasksRecord> listViewTasksRecordList =
+                                snapshot.data!;
+                            return ListView.separated(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              itemCount: listViewTasksRecordList.length,
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(height: 12.0),
+                              itemBuilder: (context, listViewIndex) {
+                                final listViewTasksRecord =
+                                    listViewTasksRecordList[listViewIndex];
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'details',
+                                      queryParameters: {
+                                        'taskDoc': serializeParam(
+                                          listViewTasksRecord,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'taskDoc': listViewTasksRecord,
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 500),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: TaskComponentWidget(
+                                    key: Key(
+                                        'Keym3s_${listViewIndex}_of_${listViewTasksRecordList.length}'),
+                                    tasks: listViewTasksRecord,
+                                    checkbox: () async {
+                                      await listViewTasksRecord.reference
+                                          .update(createTasksRecordData(
+                                        completed: false,
+                                      ));
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                     ),

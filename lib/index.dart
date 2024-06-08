@@ -16,3 +16,5 @@ export '/pages/notes/notes_widget.dart' show NotesWidget;
 export '/pages/complete_tasks/complete_tasks_widget.dart'
     show CompleteTasksWidget;
 export '/pages/add_new_note/add_new_note_widget.dart' show AddNewNoteWidget;
+export '/pages/details/details_widget.dart' show DetailsWidget;
+export '/pages/notes_edit/notes_edit_widget.dart' show NotesEditWidget;

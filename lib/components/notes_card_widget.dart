@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -131,10 +132,12 @@ class _NotesCardWidgetState extends State<NotesCardWidget>
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            dateTimeFormat('MMMMEEEEd', widget.notesdocs?.date),
+                            dateTimeFormat(
+                                'd/M h:mm a', widget.notesdocs?.date),
                             'date',
                           ),
                           style:
@@ -145,6 +148,18 @@ class _NotesCardWidgetState extends State<NotesCardWidget>
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 24.0,
+                          buttonSize: 40.0,
+                          icon: const Icon(
+                            Icons.delete_outline,
+                            color: Color(0xFFFF0000),
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            await widget.notesdocs!.reference.delete();
+                          },
                         ),
                       ],
                     ),

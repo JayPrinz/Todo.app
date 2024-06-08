@@ -65,7 +65,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -101,7 +101,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -149,10 +149,30 @@ class _NotesWidgetState extends State<NotesWidget> {
                                   itemBuilder: (context, listViewIndex) {
                                     final listViewNotesRecord =
                                         listViewNotesRecordList[listViewIndex];
-                                    return NotesCardWidget(
-                                      key: Key(
-                                          'Key28p_${listViewIndex}_of_${listViewNotesRecordList.length}'),
-                                      notesdocs: listViewNotesRecord,
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'notes_edit',
+                                          queryParameters: {
+                                            'notesdoc': serializeParam(
+                                              listViewNotesRecord,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'notesdoc': listViewNotesRecord,
+                                          },
+                                        );
+                                      },
+                                      child: NotesCardWidget(
+                                        key: Key(
+                                            'Key28p_${listViewIndex}_of_${listViewNotesRecordList.length}'),
+                                        notesdocs: listViewNotesRecord,
+                                      ),
                                     );
                                   },
                                 );
