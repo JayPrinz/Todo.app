@@ -110,7 +110,7 @@ class _TaskComponentWidgetState extends State<TaskComponentWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
-                              fontSize: 18.0,
+                              fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.normal,
                             ),

@@ -60,7 +60,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -123,7 +123,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 20.0),
                         child: TextFormField(
                           controller: _model.taskTitleTextController,
                           focusNode: _model.taskTitleFocusNode,
@@ -174,12 +174,14 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.black,
-                                    letterSpacing: 0.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 19.0,
+                                letterSpacing: 0.0,
+                              ),
                           cursorColor: Colors.black,
                           validator: _model.taskTitleTextControllerValidator
                               .asValidator(context),
@@ -247,12 +249,14 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.black,
-                                    letterSpacing: 0.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 17.0,
+                                letterSpacing: 0.0,
+                              ),
                           validator: _model
                               .taskDescriptionTextControllerValidator
                               .asValidator(context),

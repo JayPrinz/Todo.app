@@ -85,17 +85,7 @@ class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
                 child: Container(
                   width: 100.0,
                   height: 200.0,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color(0x00FFFFFF),
-                        FlutterFlowTheme.of(context).secondaryBackground
-                      ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
-                    ),
-                  ),
+                  decoration: const BoxDecoration(),
                   child: Align(
                     alignment: const AlignmentDirectional(-1.0, 1.0),
                     child: Padding(

@@ -97,7 +97,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                     padding: const EdgeInsets.all(24.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(24.0),
                         border: Border.all(
                           color: Colors.black,
@@ -117,9 +117,10 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                                 FlutterFlowIconButton(
                                   borderRadius: 24.0,
                                   buttonSize: 40.0,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.chevron_left,
-                                    color: Colors.black,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
@@ -130,9 +131,10 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                                   borderColor: Colors.transparent,
                                   borderRadius: 24.0,
                                   buttonSize: 40.0,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.edit_outlined,
-                                    color: Colors.black,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
@@ -239,6 +241,8 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -321,6 +325,8 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),

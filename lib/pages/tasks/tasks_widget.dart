@@ -48,7 +48,7 @@ class _TasksWidgetState extends State<TasksWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 0.0),
             child: Container(
               decoration: BoxDecoration(
                 color: const Color(0x00FFFFFF),
