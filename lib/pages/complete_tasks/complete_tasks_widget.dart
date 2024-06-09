@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/task_component_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -76,22 +75,8 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Flexible(
-                          child: FlutterFlowIconButton(
-                            borderRadius: 24.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.chevron_left,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              context.safePop();
-                            },
-                          ),
-                        ),
                         Text(
                           'Completed Tasks',
                           textAlign: TextAlign.center,
@@ -103,7 +88,7 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                      ].divide(const SizedBox(width: 50.0)),
+                      ],
                     ),
                   ),
                   Expanded(

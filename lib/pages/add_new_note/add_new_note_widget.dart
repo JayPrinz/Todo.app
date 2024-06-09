@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -90,28 +89,10 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                   0.0, 20.0, 0.0, 20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Align(
-                                    alignment:
-                                        const AlignmentDirectional(-0.85, -0.92),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 24.0,
-                                      buttonSize: 40.0,
-                                      icon: Icon(
-                                        Icons.chevron_left,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.safePop();
-                                      },
-                                    ),
-                                  ),
                                   Text(
-                                    'Notes',
+                                    'Add a note',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
@@ -123,7 +104,7 @@ class _AddNewNoteWidgetState extends State<AddNewNoteWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
-                                ].divide(const SizedBox(width: 90.0)),
+                                ],
                               ),
                             ),
                           ),

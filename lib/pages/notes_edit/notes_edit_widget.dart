@@ -245,7 +245,7 @@ class _NotesEditWidgetState extends State<NotesEditWidget> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 0.0, 8.0, 0.0),
+                                      8.0, 25.0, 8.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.contentTextController,
                                     focusNode: _model.contentFocusNode,

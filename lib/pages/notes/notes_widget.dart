@@ -77,24 +77,8 @@ class _NotesWidgetState extends State<NotesWidget> {
                             const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Align(
-                              alignment: const AlignmentDirectional(-0.85, -0.92),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 24.0,
-                                buttonSize: 40.0,
-                                icon: Icon(
-                                  Icons.chevron_left,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
-                                ),
-                                onPressed: () async {
-                                  context.safePop();
-                                },
-                              ),
-                            ),
                             Text(
                               'Notes',
                               textAlign: TextAlign.start,
@@ -107,7 +91,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                          ].divide(const SizedBox(width: 110.0)),
+                          ],
                         ),
                       ),
                       Expanded(

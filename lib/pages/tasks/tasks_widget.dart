@@ -108,7 +108,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                          ].divide(const SizedBox(width: 110.0)),
+                          ].divide(const SizedBox(width: 90.0)),
                         ),
                       ),
                       Expanded(
