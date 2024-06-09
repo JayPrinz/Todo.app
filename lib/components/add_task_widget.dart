@@ -182,7 +182,6 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                 fontSize: 19.0,
                                 letterSpacing: 0.0,
                               ),
-                          cursorColor: Colors.black,
                           validator: _model.taskTitleTextControllerValidator
                               .asValidator(context),
                         ),
