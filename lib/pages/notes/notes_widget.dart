@@ -191,8 +191,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FlutterFlowIconButton(
-                            borderColor:
-                                FlutterFlowTheme.of(context).primaryText,
+                            borderColor: Colors.white,
                             borderRadius: 24.0,
                             borderWidth: 2.0,
                             buttonSize: 50.0,
