@@ -80,14 +80,7 @@ To install the app on your Android device, follow these steps:
 
 ## Screenshots
 
-![signin](https://github.com/JayPrinz/Todo.app/assets/124869546/e8012570-4d4c-41be-bc0c-a7d59de856b1)
-![notes](https://github.com/JayPrinz/Todo.app/assets/124869546/294f5e16-da39-45ce-9d82-c862bbdb2103)
-![tasks](https://github.com/JayPrinz/Todo.app/assets/124869546/62a84277-45ee-4592-a282-3418ae4279bb)
-![complete tasks](https://github.com/JayPrinz/Todo.app/assets/124869546/e8b3e584-070c-47c5-a7d7-9bf39a102b6f)
-![addtask](https://github.com/JayPrinz/Todo.app/assets/124869546/9de0b9a5-a206-4976-909d-887ee80dc6d0)
-![profile](https://github.com/JayPrinz/Todo.app/assets/124869546/e11aad46-2a4f-401a-9cde-1a72e0c3e6f1)
-![edit task](https://github.com/JayPrinz/Todo.app/assets/124869546/b25f7a8c-db55-4044-9ad5-7e1bb7e6bab7)
-![darkmode](https://github.com/JayPrinz/Todo.app/assets/124869546/270c64c4-bd5a-4833-916b-a33176f9dd56)
+![LOGIN](https://github.com/JayPrinz/Todo.app/assets/124869546/b37d8226-b1c8-41ab-884c-9226859e0925)
 
 ## Technologies Used
 
