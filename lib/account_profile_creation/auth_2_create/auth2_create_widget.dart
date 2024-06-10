@@ -420,7 +420,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
                                     return;
                                   }
 
-                                  context.goNamedAuth('Tasks', context.mounted);
+                                  context.goNamedAuth('Notes', context.mounted);
                                 },
                                 text: 'Continue with Google',
                                 icon: const FaIcon(

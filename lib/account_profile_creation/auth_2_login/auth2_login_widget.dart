@@ -353,7 +353,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     return;
                                   }
 
-                                  context.goNamedAuth('Tasks', context.mounted);
+                                  context.goNamedAuth('Notes', context.mounted);
                                 },
                                 text: 'Sign In',
                                 options: FFButtonOptions(
@@ -409,7 +409,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     return;
                                   }
 
-                                  context.goNamedAuth('Tasks', context.mounted);
+                                  context.goNamedAuth('Notes', context.mounted);
                                 },
                                 text: 'Continue with Google',
                                 icon: const FaIcon(
