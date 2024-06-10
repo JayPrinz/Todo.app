@@ -155,12 +155,6 @@ class _CompleteTasksWidgetState extends State<CompleteTasksWidget> {
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         'taskDoc': listViewTasksRecord,
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 500),
-                                        ),
                                       },
                                     );
                                   },

@@ -96,6 +96,14 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Text(
+                      'Light',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color: const Color(0xFF1D2429),
+                            letterSpacing: 0.0,
+                          ),
+                    ),
                     Switch.adaptive(
                       value: _model.switchValue!,
                       onChanged: (newValue) async {
@@ -113,6 +121,14 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                           FlutterFlowTheme.of(context).alternate,
                       inactiveThumbColor:
                           FlutterFlowTheme.of(context).secondaryText,
+                    ),
+                    Text(
+                      'dark',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.white,
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ]
                       .addToStart(const SizedBox(width: 20.0))

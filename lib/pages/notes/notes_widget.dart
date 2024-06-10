@@ -187,16 +187,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed(
-                                'AddNewNote',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 500),
-                                  ),
-                                },
-                              );
+                              context.pushNamed('AddNewNote');
                             },
                           ),
                         ),
