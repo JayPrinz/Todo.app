@@ -29,27 +29,8 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
     super.initState();
     _model = createModel(context, () => Auth2ProfileModel());
 
+    _model.switchValue = false;
     animationsMap.addAll({
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: const Offset(3.0, 3.0),
-            end: const Offset(1.0, 1.0),
-          ),
-        ],
-      ),
       'buttonOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -71,6 +52,12 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
         ],
       ),
     });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -103,67 +90,67 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 180.0,
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 140.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Container(
-                            width: 100.0,
-                            height: 200.0,
-                            decoration: const BoxDecoration(),
-                          ),
-                        ).animateOnPageLoad(
-                            animationsMap['containerOnPageLoadAnimation']!),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Switch.adaptive(
+                      value: _model.switchValue!,
+                      onChanged: (newValue) async {
+                        setState(() => _model.switchValue = newValue);
+                        if (newValue) {
+                          setDarkModeSetting(context, ThemeMode.dark);
+                        } else {
+                          setDarkModeSetting(context, ThemeMode.light);
+                        }
+                      },
+                      activeColor:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                      inactiveTrackColor:
+                          FlutterFlowTheme.of(context).alternate,
+                      inactiveThumbColor:
+                          FlutterFlowTheme.of(context).secondaryText,
+                    ),
+                  ]
+                      .addToStart(const SizedBox(width: 20.0))
+                      .addToEnd(const SizedBox(width: 20.0)),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 90.0,
+                      height: 90.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).accent2,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          width: 2.0,
+                        ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 1.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 0.0, 0.0),
-                          child: Container(
-                            width: 90.0,
-                            height: 90.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).secondary,
-                                width: 2.0,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => ClipRRect(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  child: CachedNetworkImage(
-                                    fadeInDuration: const Duration(milliseconds: 500),
-                                    fadeOutDuration:
-                                        const Duration(milliseconds: 500),
-                                    imageUrl: currentUserPhoto,
-                                    width: 100.0,
-                                    height: 100.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: CachedNetworkImage(
+                              fadeInDuration: const Duration(milliseconds: 500),
+                              fadeOutDuration: const Duration(milliseconds: 500),
+                              imageUrl: currentUserPhoto,
+                              width: 100.0,
+                              height: 100.0,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 Padding(
