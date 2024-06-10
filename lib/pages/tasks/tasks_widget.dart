@@ -79,23 +79,8 @@ class _TasksWidgetState extends State<TasksWidget> {
                             0.0, 15.0, 0.0, 15.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Flexible(
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 24.0,
-                                buttonSize: 40.0,
-                                icon: Icon(
-                                  Icons.chevron_left,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
-                                ),
-                                onPressed: () async {
-                                  context.safePop();
-                                },
-                              ),
-                            ),
                             Text(
                               'Tasks',
                               textAlign: TextAlign.start,
@@ -108,7 +93,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                          ].divide(const SizedBox(width: 90.0)),
+                          ],
                         ),
                       ),
                       Expanded(
@@ -156,7 +141,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: listViewTasksRecordList.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 12.0),
+                                      const SizedBox(height: 10.0),
                                   itemBuilder: (context, listViewIndex) {
                                     final listViewTasksRecord =
                                         listViewTasksRecordList[listViewIndex];

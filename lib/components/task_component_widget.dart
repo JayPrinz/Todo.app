@@ -67,7 +67,7 @@ class _TaskComponentWidgetState extends State<TaskComponentWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 8.0),
                     child: Theme(
                       data: ThemeData(
                         checkboxTheme: const CheckboxThemeData(
@@ -101,7 +101,7 @@ class _TaskComponentWidgetState extends State<TaskComponentWidget> {
                   Flexible(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
+                          const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 8.0),
                       child: Text(
                         valueOrDefault<String>(
                           widget.tasks?.taskTitle,

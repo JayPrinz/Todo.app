@@ -122,18 +122,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                           child: Container(
                             width: 100.0,
                             height: 200.0,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  const Color(0x00FFFFFF),
-                                  FlutterFlowTheme.of(context)
-                                      .secondaryBackground
-                                ],
-                                stops: const [0.0, 1.0],
-                                begin: const AlignmentDirectional(0.0, -1.0),
-                                end: const AlignmentDirectional(0, 1.0),
-                              ),
-                            ),
+                            decoration: const BoxDecoration(),
                           ),
                         ).animateOnPageLoad(
                             animationsMap['containerOnPageLoadAnimation']!),
