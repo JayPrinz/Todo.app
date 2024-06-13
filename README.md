@@ -16,7 +16,7 @@ Welcome to **todo.ist**! This application, developed using FlutterFlow, is desig
 
 You can download the app from the following link:
 
-[Download todo.ist]([https://drive.google.com/file/d/1Er4T76i4bkUiB6L-nNaLx8eQ6pX9UmeO/view?usp=sharing](https://drive.google.com/drive/folders/1702lJsvDCiW6-lgBhnm8uknWdTzjxFSS?usp=sharing))
+[Download todo.ist](https://drive.google.com/drive/folders/1702lJsvDCiW6-lgBhnm8uknWdTzjxFSS?usp=sharing)
 
 ## Installation
 
@@ -102,8 +102,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-If you have any questions or feedback, please contact us at [your-email@example.com].
-
+If you have any questions or feedback, please contact us
 Thank you for using todo.ist!
 
 ---
